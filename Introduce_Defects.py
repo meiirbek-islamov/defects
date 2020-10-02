@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import random
 
 #Number of linkers to delete
-N = 432 # number of linkers to delete (432 = 50% defect density)
+N = 216 # number of linkers to delete (432 = 50% defect density)
 
 
 i = 0
