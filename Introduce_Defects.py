@@ -2,18 +2,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-#Number of linkers to delete
-N = 216 # number of linkers to delete (432 = 50% defect density)
-
+N = 216 # number of linkers to delete (216 = 50% defect density)
 
 i = 0
 j = 0
 input = open("HKUST-1_3x3x3.txt", "r")
 for line in input:
-    L = line.split()
-    if len(L) == 8:
+    cif_line = line.split()
+    if len(cif_line) == 8:
         i = i + 1
-        if L[1] == "C":
+        if cif_line[1] == "C":
             j = j + 1
 input.close()
 C = np.ones((j,3))
@@ -25,14 +23,14 @@ i = -1
 j = -1
 
 for line in input:
-    L = line.split()
-    if len(L) == 8:
+    cif_line = line.split()
+    if len(cif_line) == 8:
         i = i + 1
         if L[1] == "C":
             j = j + 1
-            symbol[j] = L[0]
+            symbol[j] = cif_line[0]
             for k in range(3):
-                C[j,k] = float(L[k+2])*a
+                C[j,k] = float(cif_line[k+2])*a
 input.close()
 
 j = 7776
@@ -148,10 +146,10 @@ bond_list2 = []
 for line in input:
     i = i + 1
     if i >= 16879 :
-        L = line.split()
+        cif_line = line.split()
         k = k + 1
-        bond_list1.append(L[0])
-        bond_list2.append(L[1])
+        bond_list1.append(cif_line[0])
+        bond_list2.append(cif_line[1])
 input.close()
 
 # convert threeCarbon_list to ASCII
@@ -217,17 +215,17 @@ with open("HKUST-1_3x3x3.txt") as input:
     lines = input.readlines()
     with open("missing_linkers.txt","w") as missing_linkers:
         for line in lines:
-            L = line.split()
+            cif_line = line.split()
             i = i + 1
             if i < 25:
                 missing_linkers.write(line)
             elif i >= 25 and i <= 16872:
-                if not L[0] in total_delete_list:
+                if not cif_line[0] in total_delete_list:
                     missing_linkers.write(line)
             elif i > 16872 and i < 16879:
                     missing_linkers.write(line)
             elif i >= 16879 :
-                if not L[0] in total_delete_list and not L[1] in total_delete_list:
+                if not cif_line[0] in total_delete_list and not cif_line[1] in total_delete_list:
                     missing_linkers.write(line)
                     k = k + 1
 
@@ -235,12 +233,12 @@ Cxyz = np.ones((3*len(randomlist),3))
 input = open("HKUST-1_3x3x3.txt", "r")
 
 for line in input:
-    l = line.split()
-    if len(L) == 8:
+    cif_line = line.split()
+    if len(cif_line) == 8:
         for i in range(len(delete_list_H)):
-                if L[0] == delete_list_H[i]:
+                if cif_line[0] == delete_list_H[i]:
                     for k in range(3):
-                        Cxyz[i,k] = float(L[k+2])
+                        Cxyz[i,k] = float(cif_line[k+2])
 input.close()
 
 # add hydrogens
@@ -274,16 +272,16 @@ with open("added_bonds_H.txt","w") as added_bonds_withH:
 i = 0
 input = open("missing_linkers.txt", "r")
 for line in input:
-    L = line.split()
-    if len(L) == 8:
+    cif_line = line.split()
+    if len(cif_line) == 8:
         i = i + 1
 input.close()
 
 n = 0
 input = open("missing_linkers.txt", "r")
 for line in input:
-    L = line.split()
-    if len(L) == 5:
+    cif_line = line.split()
+    if len(cif_line) == 5:
         n = n + 1
 input.close()
 
