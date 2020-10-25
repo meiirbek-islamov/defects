@@ -8,7 +8,7 @@ N = 432 # number of linkers to delete (432 = 50% defect density)
 
 i = 0
 j = 0
-input = open("HKUST-1_3x3x3.txt", "r")
+input = open("HKUST-1_3x3x3.cif", "r")
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
@@ -19,7 +19,7 @@ input.close()
 xyz = np.ones((j,3))
 symbol = np.empty((j), dtype="S10")
 
-input = open("HKUST-1_3x3x3.txt", "r")
+input = open("HKUST-1_3x3x3.cif", "r")
 a = 79.0290 # cell length in Angstrom
 i = -1
 j = -1
@@ -139,7 +139,8 @@ for elem in final_list:
 
 
 # Bond information
-input = open("HKUST-1_3x3x3.txt", "r")
+
+input = open("HKUST-1_3x3x3.cif", "r")
 i = 0
 k = -1
 bond_list1 = []
@@ -212,7 +213,7 @@ total_delete_list = delete_list_carbon + H1
 # Write cif file with missing linker
 i = 0
 k = 0
-with open("HKUST-1_3x3x3.txt") as input:
+with open("HKUST-1_3x3x3.cif") as input:
     lines = input.readlines()
     with open("missing_linkers.txt","w") as missing_linkers:
         for line in lines:
@@ -231,7 +232,7 @@ with open("HKUST-1_3x3x3.txt") as input:
                     k += 1
 
 cxyz = np.ones((3*len(randomlist),3))
-input = open("HKUST-1_3x3x3.txt", "r")
+input = open("HKUST-1_3x3x3.cif", "r")
 
 for line in input:
     cif_line = line.split()
