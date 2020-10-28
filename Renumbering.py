@@ -26,14 +26,14 @@ for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
         j += 1
-        s = re.split('Cu|C|O|H|',cif_line[0])
+        temp = re.compile("([a-zA-Z]+)([0-9]+)")
+        s = temp.match(cif_line[0]).groups()
         atoms_index[j] = int(float(s[1]))
 input.close()
 
 atoms_index_new = [0] * natoms
 for i in range(len(atoms_index)):
     atoms_index_new[i] = i + 1
-
 
 bond_1 = [0] * nbonds
 bond_2 = [0] * nbonds
@@ -43,8 +43,9 @@ for line in input:
     cif_line = line.split()
     if len(cif_line) == 5:
         j += 1
-        s1 = re.split('Cu|C|O|H|',cif_line[0])
-        s2 = re.split('Cu|C|O|H|',cif_line[1])
+        temp = re.compile("([a-zA-Z]+)([0-9]+)")
+        s1 = temp.match(cif_line[0]).groups()
+        s2 = temp.match(cif_line[1]).groups()
         bond_1[j] = int(float(s1[1]))
         bond_2[j] = int(float(s2[1]))
 input.close()
