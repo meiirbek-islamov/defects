@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
-setup(name='defect',
+from setuptools import setup, find_packages
+
+setup(name='defects',
       version='0.1.0',
       description='Introducing Missing-linker Defects in Metal-Organic Frameworks',
       author='Meiirbek Islamov',
@@ -10,9 +11,6 @@ setup(name='defect',
       packages=['defect'],
       install_requires=[
           'numpy',
-          'click',
-          'matplotlib',
-          'random',
-          're',
+          'matplotlib'
       ],
-      )
+)
