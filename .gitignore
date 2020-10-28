@@ -1,0 +1,6 @@
+.pytest_cache
+defects.egg-info/PKG-INFO
+defects.egg-info/SOURCES.txt		
+defects.egg-info/dependency_links.txt	
+defects.egg-info/requires.txt		
+defects.egg-info/top_level.txt
