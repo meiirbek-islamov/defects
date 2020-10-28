@@ -12,9 +12,9 @@ input = open("HKUST-1_3x3x3.txt", "r")
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
-        i = i + 1
+        i += 1
         if cif_line[1] == "C":
-            j = j + 1
+            j += 1
 input.close()
 C = np.ones((j,3))
 symbol = np.empty((j), dtype="S10")
@@ -27,9 +27,9 @@ j = -1
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
-        i = i + 1
+        i += 1
         if L[1] == "C":
-            j = j + 1
+            j += 1
             symbol[j] = cif_line[0]
             for k in range(3):
                 C[j,k] = float(cif_line[k+2])*a
@@ -97,11 +97,11 @@ i = -1
 flatList = []
 flatList1 = []
 for elem in output:
-    i = i + 1
+    i += 1
     k = 0
     flatList = []
     for item in elem:
-        k = k+1
+        k += 1
         if k<=9:
             flatList.extend(item)
     flatList1.append(flatList)
@@ -146,10 +146,10 @@ k = -1
 bond_list1 = []
 bond_list2 = []
 for line in input:
-    i = i + 1
+    i += 1
     if i >= 16879 :
         cif_line = line.split()
-        k = k + 1
+        k += 1
         bond_list1.append(cif_line[0])
         bond_list2.append(cif_line[1])
 input.close()
@@ -218,7 +218,7 @@ with open("HKUST-1_3x3x3.txt") as input:
     with open("missing_linkers.txt","w") as missing_linkers:
         for line in lines:
             cif_line = line.split()
-            i = i + 1
+            i += 1
             if i < 25:
                 missing_linkers.write(line)
             elif i >= 25 and i <= 16872:
@@ -229,7 +229,7 @@ with open("HKUST-1_3x3x3.txt") as input:
             elif i >= 16879 :
                 if not cif_line[0] in total_delete_list and not cif_line[1] in total_delete_list:
                     missing_linkers.write(line)
-                    k = k + 1
+                    k += 1
 
 Cxyz = np.ones((3*len(randomlist),3))
 input = open("HKUST-1_3x3x3.txt", "r")
@@ -276,7 +276,7 @@ input = open("missing_linkers.txt", "r")
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
-        i = i + 1
+        i += 1
 input.close()
 
 n = 0
@@ -284,19 +284,19 @@ input = open("missing_linkers.txt", "r")
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 5:
-        n = n + 1
+        n += 1
 input.close()
 
 k = 0
 input = open("added_H.txt", "r")
 for line in input:
-    k = k + 1
+    k += 1
 input.close()
 
 m = 0
 input = open("added_bonds_H.txt", "r")
 for line in input:
-    m = m + 1
+    m += 1
 input.close()
 
 j = 0
@@ -305,8 +305,8 @@ with open("missing_linkers.txt") as input:
     lines = input.readlines()
     with open("missing_linkers_final.txt","w") as missing_linkers:
         for line in lines:
-            j+=1
-            if j < 25+i:
+            j += 1
+            if j < 25 + i:
                 missing_linkers.write(line)
             elif j >= 25 + i and j < 31 + i:
                 if j == 25 + i:

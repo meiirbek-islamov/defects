@@ -7,7 +7,7 @@ i = 0
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
-        i = i + 1
+        i += 1
 natoms = i                               # number of atoms
 input.close()
 input = open("missing_linkers_final.txt", 'r')
@@ -15,7 +15,7 @@ i = 0
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 5:
-        i = i + 1
+        i += 1
 nbonds = i                               # number of bonds
 input.close()
 
@@ -25,7 +25,7 @@ j = -1
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
-        j = j + 1
+        j += 1
         s = re.split('Cu|C|O|H|',cif_line[0])
         atoms_index[j] = int(float(s[1]))
 input.close()
@@ -42,7 +42,7 @@ j = -1
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 5:
-        j = j + 1
+        j += 1
         s1 = re.split('Cu|C|O|H|',cif_line[0])
         s2 = re.split('Cu|C|O|H|',cif_line[1])
         bond_1[j] = int(float(s1[1]))
@@ -65,7 +65,7 @@ j = -1
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
-        j = j + 1
+        j += 1
         atoms_symbols[j] = str(cif_line[1])
 input.close()
 
@@ -87,12 +87,12 @@ with open("missing_linkers_final.txt") as input:
     with open("missing_linkers_renumbered.cif","w") as missing_linkers:
         for line in lines:
             cif_line = line.split()
-            k = k + 1
+            k += 1
             if k < 25:
                 missing_linkers.write(line)
             elif k >= 25 and k < 25 + natoms:
                 if len(cif_line) == 8:
-                    i = i + 1
+                    i += 1
                     missing_linkers.write(
                         cif_line[1] + str(atoms_index_new[i]) + "   " + cif_line[1] + "   "
                         + cif_line[2] + "   " + cif_line[3] + "   " + cif_line[4] + "   "
@@ -101,7 +101,7 @@ with open("missing_linkers_final.txt") as input:
                     missing_linkers.write(line)
             elif k >= 31 + natoms:
                 if len(cif_line) == 5:
-                    j = j + 1
+                    j += 1
                     missing_linkers.write(
                     bond_1_symbols[j] + str(bond_1_new[j]) + "   " +
                     bond_2_symbols[j] + str(bond_2_new[j]) + "   " +
