@@ -407,7 +407,7 @@ def intoduce_defects(N):
     k = 0
     with open("missing_linkers_final.txt") as input:
         lines = input.readlines()
-        with open("missing_linkers_renumbered.cif","w") as missing_linkers:
+        with open("HKUST-1_3x3x3_defected.cif","w") as missing_linkers:
             for line in lines:
                 cif_line = line.split()
                 k += 1
