@@ -429,4 +429,3 @@ def introduce_defects(N):
                         bond_1_symbols[j] + str(bond_1_new[j]) + "   " +
                         bond_2_symbols[j] + str(bond_2_new[j]) + "   " +
                         cif_line[2] + "   " + cif_line[3] + "   " + cif_line[4] + "\n")
-#intoduce_defects(216)
