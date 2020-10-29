@@ -19,3 +19,4 @@ A defective HKUST-1 (3x3x3 supercell) can be generated for a cif file HKUST-1_3x
 remove-linkers N
 ```
 Here, `N` is the number of organic linkers you want to remove. Total number of linkers in the system is `432`. Thus, if you want to delete 50% of the linkers, then, `N` will be equal to `216`.
+This will generate a defected HKUST-1 named `HKUST-1_3x3x3_defected.cif`.
