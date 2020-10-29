@@ -1,10 +1,10 @@
-def intoduce_defects(N):
+def introduce_defects(N):
     import numpy as np
     import matplotlib.pyplot as plt
     import random
     import re
 
-    N = 216 # number of linkers to delete (216 = 50% defect density)
+    #N = 216 # number of linkers to delete (216 = 50% defect density)
 
     i = 0
     j = 0
@@ -429,4 +429,4 @@ def intoduce_defects(N):
                         bond_1_symbols[j] + str(bond_1_new[j]) + "   " +
                         bond_2_symbols[j] + str(bond_2_new[j]) + "   " +
                         cif_line[2] + "   " + cif_line[3] + "   " + cif_line[4] + "\n")
-intoduce_defects(216)
+#intoduce_defects(216)
