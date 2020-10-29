@@ -13,4 +13,9 @@ setup(name='defects',
           'numpy',
           'matplotlib'
       ],
+      entry_points={
+        'console_scripts': [
+          'remove-linkers=defects.cli:introduce_defects_cli'
+        ]
+    }
 )
