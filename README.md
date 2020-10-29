@@ -1,7 +1,7 @@
 # Defects
 Python package for introducing missing-defects in Metal-organic framework, namely HKUST-1 (3x3x3 supercell).
 
-##Installation
+## Installation
 ------------
 First, clone and install the defects repository:
 
@@ -11,9 +11,10 @@ cd defects
 pip install -e ./
 ```
 
-##Usage
+## Usage
 ------------
-A defective HKUST-1 (3x3x3 supercell) can be generated for a cif file HKUST-1_3x3x3.cif with the `remove-linkers` CLI as follows:
+A defective HKUST-1 (3x3x3 supercell) can be generated for a cif file HKUST-1_3x3x3.cif with the
+`remove-linkers` CLI as follows:
 ```
 remove-linkers N
 ```
