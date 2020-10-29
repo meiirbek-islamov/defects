@@ -2,11 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-N = 216 # number of linkers to delete (216 = 50% defect density)
+
+N = 432 # number of linkers to delete (432 = 50% defect density)
+
 
 i = 0
 j = 0
-input = open("HKUST-1_3x3x3.cif", "r")
+input = open("HKUST-1_3x3x3.txt", "r")
 for line in input:
     cif_line = line.split()
     if len(cif_line) == 8:
