@@ -1,4 +1,11 @@
 def introduce_defects(N):
+
+    """Introduce missing-linker defects in HKUST-1 (3x3x3) supercell
+    Args:
+        - N (int): Number of linkers to be deleted. Total number of linkers in the system = 432. e.g. 50% of linkers: N = 216
+    Returns:
+        - cif file: HKUST-1_3x3x3_defected.cif
+    """
     import numpy as np
     import matplotlib.pyplot as plt
     import random
