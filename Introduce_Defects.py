@@ -10,11 +10,11 @@ i = 0
 j = 0
 input = open("HKUST-1_3x3x3.txt", "r")
 for line in input:
-    l = line.split()
-    if len(l) == 8:
-        i = i + 1
-        if l[1] == "C":
-            j = j + 1
+    cif_line = line.split()
+    if len(cif_line) == 8:
+        i += 1
+        if cif_line[1] == "C":
+            j += 1
 input.close()
 C = np.ones((j,3))
 symbol = np.empty((j), dtype="S10")
@@ -25,14 +25,14 @@ i = -1
 j = -1
 
 for line in input:
-    l = line.split()
-    if len(l) == 8:
-        i = i + 1
-        if l[1] == "C":
-            j = j + 1
-            symbol[j] = l[0]
+    cif_line = line.split()
+    if len(cif_line) == 8:
+        i += 1
+        if L[1] == "C":
+            j += 1
+            symbol[j] = cif_line[0]
             for k in range(3):
-                C[j,k] = float(l[k+2])*a
+                C[j,k] = float(cif_line[k+2])*a
 input.close()
 
 j = 7776
@@ -97,11 +97,11 @@ i = -1
 flatList = []
 flatList1 = []
 for elem in output:
-    i = i + 1
+    i += 1
     k = 0
     flatList = []
     for item in elem:
-        k = k+1
+        k += 1
         if k<=9:
             flatList.extend(item)
     flatList1.append(flatList)
@@ -139,19 +139,18 @@ for elem in final_list:
 
 
 # Bond information
-
 input = open("HKUST-1_3x3x3.txt", "r")
 i = 0
 k = -1
 bond_list1 = []
 bond_list2 = []
 for line in input:
-    i = i + 1
+    i += 1
     if i >= 16879 :
-        l = line.split()
-        k = k + 1
-        bond_list1.append(l[0])
-        bond_list2.append(l[1])
+        cif_line = line.split()
+        k += 1
+        bond_list1.append(cif_line[0])
+        bond_list2.append(cif_line[1])
 input.close()
 
 # convert threeCarbon_list to ASCII
@@ -217,40 +216,39 @@ with open("HKUST-1_3x3x3.txt") as input:
     lines = input.readlines()
     with open("missing_linkers.txt","w") as missing_linkers:
         for line in lines:
-            l = line.split()
-            i+=1
+            cif_line = line.split()
+            i += 1
             if i < 25:
                 missing_linkers.write(line)
-            elif i >= 25 and i<=16872:
-                if not l[0] in total_delete_list:
+            elif i >= 25 and i <= 16872:
+                if not cif_line[0] in total_delete_list:
                     missing_linkers.write(line)
-            elif i > 16872 and i<16879:
+            elif i > 16872 and i < 16879:
                     missing_linkers.write(line)
             elif i >= 16879 :
-                if not l[0] in total_delete_list and not l[1] in total_delete_list:
+                if not cif_line[0] in total_delete_list and not cif_line[1] in total_delete_list:
                     missing_linkers.write(line)
-                    k = k + 1
-
+                    k += 1
 Cxyz = np.ones((3*len(randomlist),3))
 input = open("HKUST-1_3x3x3.txt", "r")
 
 for line in input:
-    l = line.split()
-    if len(l) == 8:
+    cif_line = line.split()
+    if len(cif_line) == 8:
         for i in range(len(delete_list_H)):
-                if l[0] == delete_list_H[i]:
+                if cif_line[0] == delete_list_H[i]:
                     for k in range(3):
-                        Cxyz[i,k] = float(l[k+2])
+                        Cxyz[i,k] = float(cif_line[k+2])
+
 input.close()
 
 # add hydrogens
 
 with open("added_H.txt","w") as added_H_xyz:
     for i in range (len(H1)):
-            added_H_xyz.write(H1[i] + "     " + "H" + "     " + str(Cxyz[i][0]) + "   "
-                              + str(Cxyz[i][1]) + "   " + str(Cxyz[i][2]) + "   "
-                              + "0.0000" + "   " + "Uiso" + "   " + "1.0" + "\n")
-
+        added_H_xyz.write(H1[i] + "     " + "H" + "     " + str(Cxyz[i][0]) + "   "
+          + str(Cxyz[i][1]) + "   " + str(Cxyz[i][2]) + "   "
+          + "0.0000" + "   " + "Uiso" + "   " + "1.0" + "\n")
 # adding bonds with hydrogen
 
 C_H = []
@@ -265,36 +263,37 @@ for i in delete_list_H:
 
 with open("added_bonds_H.txt","w") as added_bonds_withH:
     for i in range (len(H1)):
-            added_bonds_withH.write(C_H[i] + "   " + H1[i] + "  " + str("1.498") + "   "
-                              + str(".") + "     " + str("S") + "\n")
+        added_bonds_withH.write(
+            C_H[i] + "   " + H1[i] + "  " + str("1.498")
+            + "   " + str(".") + "     " + str("S") + "\n")
 
 #Combining all text files into one
 i = 0
 input = open("missing_linkers.txt", "r")
 for line in input:
-    l = line.split()
-    if len(l) == 8:
-        i = i + 1
+    cif_line = line.split()
+    if len(cif_line) == 8:
+        i += 1
 input.close()
 
 n = 0
 input = open("missing_linkers.txt", "r")
 for line in input:
-    l = line.split()
-    if len(l) == 5:
-        n = n + 1
+    cif_line = line.split()
+    if len(cif_line) == 5:
+        n += 1
 input.close()
 
 k = 0
 input = open("added_H.txt", "r")
 for line in input:
-    k = k + 1
+    k += 1
 input.close()
 
 m = 0
 input = open("added_bonds_H.txt", "r")
 for line in input:
-    m = m + 1
+    m += 1
 input.close()
 
 j = 0
@@ -303,8 +302,8 @@ with open("missing_linkers.txt") as input:
     lines = input.readlines()
     with open("missing_linkers_final.txt","w") as missing_linkers:
         for line in lines:
-            j+=1
-            if j < 25+i:
+            j += 1
+            if j < 25 + i:
                 missing_linkers.write(line)
             elif j >= 25 + i and j < 31 + i:
                 if j == 25 + i:
