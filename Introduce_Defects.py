@@ -139,7 +139,6 @@ for elem in final_list:
 
 
 # Bond information
-
 input = open("HKUST-1_3x3x3.txt", "r")
 i = 0
 k = -1
@@ -230,7 +229,6 @@ with open("HKUST-1_3x3x3.txt") as input:
                 if not cif_line[0] in total_delete_list and not cif_line[1] in total_delete_list:
                     missing_linkers.write(line)
                     k += 1
-
 Cxyz = np.ones((3*len(randomlist),3))
 input = open("HKUST-1_3x3x3.txt", "r")
 
@@ -241,17 +239,16 @@ for line in input:
                 if cif_line[0] == delete_list_H[i]:
                     for k in range(3):
                         Cxyz[i,k] = float(cif_line[k+2])
+
 input.close()
 
 # add hydrogens
 
 with open("added_H.txt","w") as added_H_xyz:
     for i in range (len(H1)):
-            added_H_xyz.write(
-            H1[i] + "     " + "H" + "     " + str(Cxyz[i][0]) + "   "
-            + str(Cxyz[i][1]) + "   " + str(Cxyz[i][2]) + "   "
-            + "0.0000" + "   " + "Uiso" + "   " + "1.0" + "\n")
-
+        added_H_xyz.write(H1[i] + "     " + "H" + "     " + str(Cxyz[i][0]) + "   "
+          + str(Cxyz[i][1]) + "   " + str(Cxyz[i][2]) + "   "
+          + "0.0000" + "   " + "Uiso" + "   " + "1.0" + "\n")
 # adding bonds with hydrogen
 
 C_H = []
@@ -266,7 +263,7 @@ for i in delete_list_H:
 
 with open("added_bonds_H.txt","w") as added_bonds_withH:
     for i in range (len(H1)):
-            added_bonds_withH.write(
+        added_bonds_withH.write(
             C_H[i] + "   " + H1[i] + "  " + str("1.498")
             + "   " + str(".") + "     " + str("S") + "\n")
 
